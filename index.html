@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Shen Yi — Portfolio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Inter:wght@400;500;600;700&family=Satisfy&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --oxford-blue: #102a4c;
+      --oxford-mid: #1c3d66;
+      --bg-grid: #efefeb;
+      --grid-line-page: rgba(16, 42, 76, 0.045);
+      --grid-line-paper: rgba(16, 42, 76, 0.06);
+      --paper: #faf6ec;
+      --ink: #1a1f2e;
+      --muted: #5c6478;
+      --line: #a8aeb8;
+      --highlight: #fff9c4;
+      --pencil: rgba(90, 98, 115, 0.5);
+      --pencil-light: rgba(130, 138, 152, 0.42);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html {
+      min-height: 100%;
+      background-color: var(--bg-grid);
+      background-image:
+        linear-gradient(var(--grid-line-page) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line-page) 1px, transparent 1px);
+      background-size: 18px 18px;
+      background-attachment: fixed;
+    }
+
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0.75rem;
+      z-index: 100;
+      padding: 0.5rem 1rem;
+      background: var(--paper);
+      border: 1px solid var(--oxford-mid);
+      border-radius: 4px;
+      color: var(--ink);
+      font-size: 0.9rem;
+      text-decoration: none;
+    }
+
+    .skip-link:focus {
+      left: 0.75rem;
+      outline: 2px solid var(--oxford-blue);
+      outline-offset: 2px;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: 16px;
+      line-height: 1.65;
+      color: var(--ink);
+      background-color: var(--bg-grid);
+      background-image:
+        linear-gradient(var(--grid-line-page) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line-page) 1px, transparent 1px);
+      background-size: 18px 18px;
+      background-attachment: fixed;
+    }
+
+    .paper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: clamp(2rem, 5vw, 3.25rem) clamp(1.75rem, 4vw, 3rem);
+      background-color: var(--paper);
+      background-image:
+        linear-gradient(var(--grid-line-paper) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line-paper) 1px, transparent 1px);
+      background-size: 14px 14px;
+      border: 1px solid rgba(16, 42, 76, 0.1);
+      border-radius: 8px 10px 7px 9px / 9px 8px 10px 7px;
+      box-shadow:
+        0 1px 0 rgba(255, 255, 255, 0.7) inset,
+        0 2px 16px rgba(16, 42, 76, 0.06);
+    }
+
+    .page-wrap {
+      padding: clamp(2rem, 8vw, 4.5rem) clamp(1rem, 5vw, 3rem);
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    h1 {
+      margin: 0 0 0.35rem;
+      font-family: "Caveat", cursive;
+      font-size: clamp(3rem, 11vw, 4.25rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      line-height: 1.05;
+      color: var(--oxford-blue);
+    }
+
+    .name-underline {
+      display: block;
+      margin: 0.2rem auto 0;
+      max-width: 240px;
+      height: 14px;
+      color: var(--line);
+    }
+
+    .tagline-banner {
+      display: inline-block;
+      margin: 1rem auto 0;
+      padding: 0.5rem 1.15rem;
+      max-width: 100%;
+      font-family: Inter, system-ui, sans-serif;
+      font-size: clamp(0.8rem, 2.2vw, 0.95rem);
+      font-weight: 600;
+      line-height: 1.45;
+      letter-spacing: 0.03em;
+      color: var(--oxford-blue);
+      background: rgba(16, 42, 76, 0.06);
+      border: 1px solid rgba(16, 42, 76, 0.14);
+      border-radius: 6px;
+      box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8) inset;
+    }
+
+    .section-heading {
+      margin: 0 0 1.25rem;
+      font-family: "Satisfy", cursive;
+      font-size: clamp(1.85rem, 4.5vw, 2.35rem);
+      font-weight: 400;
+      font-style: normal;
+      color: var(--oxford-mid);
+      letter-spacing: 0.02em;
+      line-height: 1.25;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .section-heading .section-emoji {
+      font-family: system-ui, sans-serif;
+      font-size: 1.15em;
+      line-height: 1;
+    }
+
+    .sketch-rule {
+      margin: 2.1rem 0;
+      height: 10px;
+      overflow: visible;
+    }
+
+    .sketch-rule svg {
+      display: block;
+      width: 100%;
+      height: 10px;
+    }
+
+    .intro-block {
+      margin-top: 0.25rem;
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: minmax(168px, 220px) 1fr;
+      gap: clamp(1.25rem, 4vw, 2.25rem);
+      align-items: start;
+    }
+
+    @media (max-width: 700px) {
+      .intro-grid {
+        grid-template-columns: 1fr;
+        justify-items: center;
+        text-align: center;
+      }
+      .intro-grid .about-copy {
+        text-align: left;
+      }
+      .intro-aside {
+        width: 100%;
+        max-width: 280px;
+      }
+      .social-row {
+        justify-content: center;
+      }
+    }
+
+    .intro-aside {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.25rem;
+    }
+
+    .avatar-frame {
+      flex-shrink: 0;
+      width: 176px;
+      height: 176px;
+      border-radius: 50%;
+      border: 1px solid var(--line);
+      overflow: hidden;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(16, 42, 76, 0.1);
+    }
+
+    .avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .avatar-fallback {
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      font-family: "Caveat", cursive;
+      font-size: 3.25rem;
+      color: var(--muted);
+      background: linear-gradient(145deg, #fafafa, #ececec);
+    }
+
+    .avatar-frame.is-fallback .avatar-fallback {
+      display: flex;
+    }
+
+    .avatar-frame.is-fallback img {
+      display: none;
+    }
+
+    .aside-note {
+      width: 100%;
+      margin: 0;
+      padding: 0.65rem 0.75rem;
+      font-size: 0.78rem;
+      line-height: 1.5;
+      color: var(--muted);
+      text-align: center;
+      border: 1px dashed rgba(16, 42, 76, 0.2);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.45);
+    }
+
+    .about-copy p,
+    .about-para {
+      margin: 0 0 0.95rem;
+    }
+
+    .about-copy p:last-child,
+    .about-para:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-marker {
+      display: inline;
+      margin-right: 0.35rem;
+      font-size: 0.95em;
+      letter-spacing: 0.02em;
+      white-space: nowrap;
+    }
+
+    .mark-highlight {
+      background: linear-gradient(
+        180deg,
+        transparent 10%,
+        var(--highlight) 10%,
+        var(--highlight) 90%,
+        transparent 90%
+      );
+      box-decoration-break: clone;
+      -webkit-box-decoration-break: clone;
+      padding: 0.06em 0.2em;
+      border-radius: 2px;
+    }
+
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .social-tile {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.45rem;
+      min-height: 44px;
+      padding: 0.45rem 0.85rem;
+      background: #fff;
+      color: var(--oxford-blue);
+      text-decoration: none;
+      font-family: "Silkscreen", system-ui, sans-serif;
+      font-size: 0.62rem;
+      line-height: 1.25;
+      letter-spacing: 0.02em;
+      border: 2px solid var(--oxford-blue);
+      border-radius: 4px 6px 5px 7px / 6px 5px 7px 5px;
+      box-shadow: 1px 1px 0 rgba(16, 42, 76, 0.15);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .social-tile:nth-child(2) {
+      border-radius: 6px 4px 7px 5px / 5px 7px 4px 6px;
+      transform: rotate(-0.25deg);
+    }
+
+    .social-tile:nth-child(3) {
+      border-radius: 5px 7px 4px 6px / 7px 5px 6px 4px;
+      transform: rotate(0.3deg);
+    }
+
+    .social-tile svg {
+      width: 17px;
+      height: 17px;
+      flex-shrink: 0;
+      stroke: var(--oxford-blue);
+    }
+
+    .social-tile:hover {
+      box-shadow: 0 5px 14px rgba(16, 42, 76, 0.18);
+      transform: translateY(-2px) rotate(0deg);
+    }
+
+    .social-tile:focus-visible {
+      outline: 2px solid var(--oxford-blue);
+      outline-offset: 3px;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .social-tile {
+        transition: none;
+      }
+      .social-tile:hover {
+        transform: none;
+      }
+      .social-tile:nth-child(2),
+      .social-tile:nth-child(3) {
+        transform: none;
+      }
+    }
+
+    .project-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .project-item {
+      margin-bottom: 1.35rem;
+    }
+
+    .project-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .project-item .project-lead {
+      display: block;
+      margin: 0 0 0.4rem;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--oxford-blue);
+      line-height: 1.4;
+    }
+
+    .project-item .project-detail {
+      margin: 0;
+      padding-left: 0;
+      font-size: 0.95rem;
+      color: #3a4154;
+      line-height: 1.65;
+    }
+
+    .work-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .work-item {
+      margin-bottom: 1.5rem;
+    }
+
+    .work-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .work-item .work-title {
+      margin: 0 0 0.45rem;
+      font-size: 1.02rem;
+      font-weight: 700;
+      color: var(--ink);
+      line-height: 1.45;
+    }
+
+    .work-item .work-title em {
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    .work-item .work-desc {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #3a4154;
+      line-height: 1.65;
+    }
+
+    .skills-block {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .skills-group {
+      margin-bottom: 1.35rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(16, 42, 76, 0.1);
+    }
+
+    .skills-group:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .skills-cat {
+      margin: 0 0 0.5rem;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--oxford-blue);
+      line-height: 1.3;
+      padding-left: 0.65rem;
+      border-left: 3px solid var(--oxford-blue);
+    }
+
+    .skills-list {
+      margin: 0;
+      font-size: 0.98rem;
+      font-weight: 400;
+      color: #3a4154;
+      line-height: 1.7;
+      padding-left: 0.15rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <div class="page-wrap">
+    <main class="paper" id="main">
+      <header>
+        <h1>Shen Yi</h1>
+        <svg class="name-underline" viewBox="0 0 200 14" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M3 9C28 5 72 11 100 8C128 5 172 10 197 7" stroke="currentColor" stroke-width="1.15" stroke-linecap="round" />
+          <path d="M4 10.5C45 8 95 12 140 9.5C165 8.5 185 10 196 9" stroke="currentColor" stroke-width="0.45" stroke-linecap="round" opacity="0.65" />
+        </svg>
+        <p class="tagline-banner">Tongji University · B.A. Animation · 2022—2026</p>
+      </header>
+
+      <div class="sketch-rule" aria-hidden="true">
+        <svg viewBox="0 0 600 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 5.2C45 3.8 95 6.4 150 4.9C220 3 290 6.8 360 5.1C430 3.5 500 6.2 600 4.7" fill="none" stroke="var(--pencil)" stroke-width="0.95" stroke-linecap="round" />
+          <path d="M0 5.8C55 7.2 120 3.5 200 5.5C280 7.4 380 4.1 470 6C520 6.8 565 5.3 600 5.9" fill="none" stroke="var(--pencil-light)" stroke-width="0.5" stroke-linecap="round" />
+          <path d="M12 4.6C200 6.2 400 3.8 588 5.4" fill="none" stroke="var(--pencil-light)" stroke-width="0.35" stroke-linecap="round" opacity="0.85" />
+        </svg>
+      </div>
+
+      <section class="intro-block" aria-label="Introduction">
+        <div class="intro-grid">
+          <div class="intro-aside">
+            <figure class="avatar-frame" id="avatar-box">
+              <img src="avatar.png" alt="Shen Yi" width="176" height="176" decoding="async" />
+              <div class="avatar-fallback" aria-hidden="true">沈</div>
+            </figure>
+            <p class="aside-note">Visual design · Animation · Creative direction</p>
+            <div class="social-row">
+              <a class="social-tile" href="mailto:15905178773@139.com" aria-label="Email Shen Yi">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect x="2" y="4" width="20" height="16" rx="2" />
+                  <path d="M22 6l-10 7L2 6" />
+                </svg>
+                EMAIL
+              </a>
+              <a class="social-tile" href="tel:+861595178773" aria-label="Call +86 159 0517 8773">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+                </svg>
+                TEL
+              </a>
+              <a class="social-tile" href="https://github.com/sy080615905178773" rel="noopener noreferrer" aria-label="GitHub profile">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+                </svg>
+                GITHUB
+              </a>
+            </div>
+          </div>
+          <div class="about-copy">
+            <p class="about-para">
+              <span class="about-marker" aria-hidden="true">▶︎ 🧩</span>
+              Hi, I'm Shen—thanks for stopping by. I'm a visual designer and animator who enjoys turning messy ideas into clear, memorable visuals. Whether it's motion, branding, or interface work, I like staying close to the full journey from first sketch to final delivery, so the story feels coherent and honest end to end.
+            </p>
+            <p class="about-para">
+              <span class="about-marker" aria-hidden="true">▶︎ 🎓</span>
+              I'm pursuing a B.A. in Animation at <strong>Tongji University</strong> (2022—2026). I ranked <span class="mark-highlight">first in my major's comprehensive assessment for 2023—2024</span> and hold a <span class="mark-highlight">GPA of 4.71 / 5.0</span>. I've received the Tongji Undergraduate Excellence Scholarship in both 2023 and 2024 (First and Second Prize).
+            </p>
+            <p class="about-para">
+              <span class="about-marker" aria-hidden="true">▶︎ 🏆</span>
+              <span class="mark-highlight">Seven national-level awards</span>, <span class="mark-highlight">six provincial-level awards</span>, <span class="mark-highlight">two national university student innovation programs</span>, and <span class="mark-highlight">two silver awards</span> at Tongji's "Internet+" competition round out the track record I'm proudest of so far.
+            </p>
+            <p class="about-para">
+              <span class="about-marker" aria-hidden="true">▶︎ 💼</span>
+              I interned at <strong>Tencent CDG — Tencent Advertising</strong> as a <strong>Visual Design Intern</strong>, working on <strong>B2B-facing AI agent platforms</strong>. I partnered with product and engineering to clarify complex automation for enterprise users—translating capabilities into layouts, components, and guidelines that stay consistent while scaling, and helping AI-assisted workflows feel legible rather than intimidating.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="sketch-rule" aria-hidden="true">
+        <svg viewBox="0 0 600 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2 4.9C88 6.8 180 3.2 280 5.4C380 7.5 490 4.1 598 5.7" fill="none" stroke="var(--pencil)" stroke-width="0.9" stroke-linecap="round" />
+          <path d="M0 6.1C120 4 240 7 360 5.2C450 3.9 530 6.5 600 5" fill="none" stroke="var(--pencil-light)" stroke-width="0.48" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <section aria-labelledby="projects-heading">
+        <h2 class="section-heading" id="projects-heading"><span class="section-emoji" aria-hidden="true">🎬</span> Participating Projects</h2>
+        <ul class="project-list">
+          <li class="project-item">
+            <strong class="project-lead">Tongji University anniversary film <em>Blazing Path</em> <span lang="zh">《炽途》</span></strong>
+            <p class="project-detail">Led technical exploration for this anniversary promotional film—connecting 3D scanning with particle-based workflows, stress-testing multiple implementation paths, and packaging clear documentation so the team could iterate with confidence.</p>
+          </li>
+          <li class="project-item">
+            <strong class="project-lead">Graduation showcase: channel growth &amp; onsite operations</strong>
+            <p class="project-detail">Owned content planning and publishing for the program's official WeChat account, significantly boosting reach and audience engagement; supported the screening exhibition with venue circulation, guest reception, and cross-team coordination for a seamless end-to-end experience.</p>
+          </li>
+          <li class="project-item">
+            <strong class="project-lead">Regional tourism film — creative direction from pitch to schedule</strong>
+            <p class="project-detail">Led the creative proposal and early storyboarding for a Jingdezhen tourism promotional piece during the Tongji phase, aligning collaborators and production timelines so delivery stayed on track without sacrificing narrative clarity.</p>
+          </li>
+          <li class="project-item">
+            <strong class="project-lead">Product hero visuals for a flagship tech spot</strong>
+            <p class="project-detail">Built high-precision hero models in Cinema 4D for Acer's "Time Capsule" campaign, pushing materials and lighting until the products read premium, precise, and believable on screen.</p>
+          </li>
+          <li class="project-item">
+            <strong class="project-lead">48-hour timed competition sprint: VFX, identity, and packaging in one run</strong>
+            <p class="project-detail">Competed in a national <strong>48-hour timed jam</strong> (live clock): directed a compact team through live-action VFX, event key art, IP character design, group VI, and two packaging concepts—earning multiple national awards in a major art and design competition.</p>
+          </li>
+          <li class="project-item">
+            <strong class="project-lead">Director, red culture series <em>The Chinese Spirit</em> <span lang="zh">《中国精神》</span> — Tongji College of Arts and Media</strong>
+            <p class="project-detail">Directed the College of Arts and Media's red culture promotional video series—setting the creative through-line, guiding episodic storytelling, and aligning production with the school's campaign goals.</p>
+          </li>
+        </ul>
+      </section>
+
+      <div class="sketch-rule" aria-hidden="true">
+        <svg viewBox="0 0 600 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 5.5C100 3.5 200 7 300 5C400 3.8 500 6.2 600 4.8" fill="none" stroke="var(--pencil)" stroke-width="0.92" stroke-linecap="round" />
+          <path d="M15 6C150 4.5 300 6.8 585 5.3" fill="none" stroke="var(--pencil-light)" stroke-width="0.42" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <section aria-labelledby="works-heading">
+        <h2 class="section-heading" id="works-heading"><span class="section-emoji" aria-hidden="true">🎨</span> Major Personal Works</h2>
+        <ul class="work-list">
+          <li class="work-item">
+            <p class="work-title"><em>Hypertrace</em> (<span lang="zh">《超维足迹》</span>)</p>
+            <p class="work-desc">A modular rigging study for quadruped robots—layered bone hierarchies, inverse kinematics chains, and a hybrid FK / IK system that keeps mechanical motion controllable at every level.</p>
+          </li>
+          <li class="work-item">
+            <p class="work-title"><em>Empty Mountain</em> (<span lang="zh">《空山》</span>)</p>
+            <p class="work-desc">An experimental stop-motion workflow that fuses in-camera performance with 3D digital motion, plus a cross-media asset library that keeps plates, meshes, and references organized across disciplines.</p>
+          </li>
+          <li class="work-item">
+            <p class="work-title"><em>Future Echo</em> (<span lang="zh">《未来残响》</span>)</p>
+            <p class="work-desc">Full worldbuilding visualization and an end-to-end pipeline that jumps across DCC tools without losing continuity—from look development to final game-ready presentation.</p>
+          </li>
+          <li class="work-item">
+            <p class="work-title"><em>Twenty-Four Solar Terms × Classic of Mountains and Seas</em> (<span lang="zh">《二十四节气山海经》</span>)</p>
+            <p class="work-desc">3D visual development for an IP-driven designer-toy line, translating mythic motifs into collectible forms, materials, and render-ready hero assets.</p>
+          </li>
+          <li class="work-item">
+            <p class="work-title"><em>The Chinese Spirit</em> series (<span lang="zh">《中国精神》</span>)</p>
+            <p class="work-desc">Series-level production coordination for MG animation—balancing creative throughput with distribution strategy to grow reach on new media channels.</p>
+          </li>
+          <li class="work-item">
+            <p class="work-title"><em>The Mirror</em></p>
+            <p class="work-desc">An independent 3D animated short that leans on physics-aware, cartoon-style shading to keep stylized lighting believable and expressive from shot to shot.</p>
+          </li>
+        </ul>
+      </section>
+
+      <div class="sketch-rule" aria-hidden="true">
+        <svg viewBox="0 0 600 10" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M5 5.1C95 6.9 190 4 285 5.6C420 7.7 520 4.2 595 5.4" fill="none" stroke="var(--pencil)" stroke-width="0.88" stroke-linecap="round" />
+          <path d="M0 4.7C200 6.5 400 4 600 5.8" fill="none" stroke="var(--pencil-light)" stroke-width="0.46" stroke-linecap="round" />
+        </svg>
+      </div>
+
+      <section aria-labelledby="skills-heading">
+        <h2 class="section-heading" id="skills-heading"><span class="section-emoji" aria-hidden="true">🛠️</span> Skills</h2>
+        <div class="skills-block">
+          <div class="skills-group">
+            <h3 class="skills-cat">3D &amp; animation</h3>
+            <p class="skills-list">Cinema 4D · Octane · Maya · 3ds Max · ZBrush · Substance Painter · PFTrack</p>
+          </div>
+          <div class="skills-group">
+            <h3 class="skills-cat">Compositing &amp; editorial</h3>
+            <p class="skills-list">After Effects · Media Encoder · Premiere Pro · CapCut</p>
+          </div>
+          <div class="skills-group">
+            <h3 class="skills-cat">Design &amp; AIGC</h3>
+            <p class="skills-list">Figma · Photoshop · Illustrator · Lovart · Stable Diffusion · Midjourney · Comfy UI</p>
+          </div>
+          <div class="skills-group">
+            <h3 class="skills-cat">Other</h3>
+            <p class="skills-list">CET-6 English · Office suite</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
+  <script>
+    (function () {
+      var img = document.querySelector(".avatar-frame img");
+      var box = document.getElementById("avatar-box");
+      if (!img || !box) return;
+      function showFallback() {
+        box.classList.add("is-fallback");
+      }
+      if (img.complete && img.naturalWidth === 0) showFallback();
+      img.addEventListener("error", showFallback);
+    })();
+  </script>
+</body>
+</html>
